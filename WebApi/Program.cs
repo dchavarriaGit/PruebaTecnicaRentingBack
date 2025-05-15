@@ -1,4 +1,6 @@
 ﻿using Microsoft.ApplicationInsights.Extensibility;
+using PruebaTecnicaRenting.Domain.Repositories;
+using PruebaTecnicaRenting.Infrastructure.EntityFramework.Repositories;
 using PruebaTecnicaRenting.Infrastructure.Extensions;
 using PruebaTecnicaRenting.WebApi.Base.Extensions;
 using PruebaTecnicaRenting.WebApi.Base.Filters;
@@ -21,6 +23,7 @@ builder.Services.AddRentingCors(configuration);
 
 builder.Services.AddApplication(configuration);
 builder.Services.AddInfrastructure(configuration);
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
